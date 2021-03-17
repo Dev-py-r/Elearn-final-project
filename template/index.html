@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Loan Predictor</title>
+
+    <!-- core CSS -->
+    <link href="{{ url_for ('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for ('static', filename='css/main.css')}}" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="{{ url_for ('static', filename='img/favicon.png')}}" rel="stylesheet">
+
+</head>
+<!--/head-->
+
+
+<!--Loan_ID Gender  Married Dependents  Education   Self_Employed   ApplicantIncome CoapplicantIncome   LoanAmount  Loan_Amount_Term    Credit_History  Property_Area   Loan_Status -->
+  <!-- Page Header -->
+  <header class="masthead darkened-image" style="background-image: url('{{ url_for ('static', filename='img/page-title.jpg')}}">
+
+
+    
+    <div class="container">
+      <div class="row">
+        
+          <h1 class="large-title">Loan Status Prediction</h1>
+ 
+    
+      </div>
+    </div>
+  </header>
+
+
+<body>
+
+  <div></div>
+   <section class="form-group">
+    
+  <div class="container">
+<form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="sendemail.php">
+<div class="align-content">
+    <div class="form-group col-md-2">
+      <label for="UserName">Name</label>
+      <input type="text" class="form-control" id="UserName" placeholder="Applicant Name">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="Gender">Gender</label>
+    <select id="Gender" class="form-control">
+        <option selected>Select</option>
+        <option>Male</option>
+        <option>Female</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="Married">Married</label>
+          <select id="Married" class="form-control">
+            <option selected>Select</option>
+            <option>Yes</option>
+            <option>No</option>
+            </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="Dependents">Dependents</label>
+      <select id="Dependents" class="form-control">
+            <option selected>Select</option>
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3+</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="Education">Education</label>
+        <select id="Education" class="form-control">
+            <option selected>Select</option>
+            <option>Graduate</option>
+            <option>Not Graduate</option>
+      </select>
+    </div>
+     <div class="form-group col-md-2">
+      <label for="Self_Employed">Self_Employed</label>
+       <select id="Self_Employed" class="form-control">
+            <option selected>Select</option>
+            <option>Yes</option>
+            <option>No</option>
+      </select>
+    </div>
+     <div class="form-group col-md-2">
+      <label for="Credit_History">Credit_History</label>
+         <select id="Credit_History" class="form-control">
+            <option selected>Select</option>
+            <option>Yes</option>
+            <option>No</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="Property_Area">Property_Area</label>
+       <select id="Property_Area" class="form-control">
+        <option selected>Choose...</option>
+        <option>Urban</option>
+        <option>Rural</option>
+        <option>Semiurban</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="Total_Income">Total_Income</label>
+      <input type="amount" class="form-control" id="Total_Income" placeholder="Total_Income">
+    </div>
+     <div class="form-group col-md-2">
+      <label for="EMI">EMI</label>
+      <input type="amount" class="form-control" id="EMI" placeholder="EMI">
+    </div>
+     <div class="form-group col-md-2">
+      <label for="Balance Income">Balance Income</label>
+      <input type="number" class="form-control" id="Balance_Income" placeholder="Balance Income">
+    </div>
+   </div>
+
+ <!-- <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck">
+      <label class="form-check-label" for="gridCheck">
+        Check me out
+      </label>
+    </div> -->
+  <div class="form-group col-md-2">
+  <button type="submit" class="btn btn-primary">Predict</button>
+</div>
+
+</form>
+    </section><!--/#contact-page-->
+
+ 
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{{ url_for ('static', filename='vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{ url_for ('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="{{ url_for ('static', filename='js/clean-blog.min.js')}}"></script>
+<footer>      
+<p class="center footer">Copyright &copy; Dev 2021</p>     
+</footer>
+</body>
+ <!-- Footer -->
+
+
+</html>

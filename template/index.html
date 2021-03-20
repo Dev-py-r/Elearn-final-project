@@ -1,58 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Loan Predictor</title>
-
-    <!-- core CSS -->
-    <link href="{{ url_for ('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{ url_for ('static', filename='css/main.css')}}" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
-    <link rel="shortcut icon" href="{{ url_for ('static', filename='img/favicon.png')}}" rel="stylesheet">
-
-</head>
-<!--/head-->
-
-
-<!--Loan_ID Gender  Married Dependents  Education   Self_Employed   ApplicantIncome CoapplicantIncome   LoanAmount  Loan_Amount_Term    Credit_History  Property_Area   Loan_Status -->
-  <!-- Page Header -->
-  <header class="masthead darkened-image" style="background-image: url('{{ url_for ('static', filename='img/page-title.jpg')}}">
-
-
-    
-    <div class="container">
-      <div class="row">
-        
-          <h1 class="large-title">Loan Status Prediction</h1>
+{% extends 'base.html' %} 
+{% block body %}
  
-    
-      </div>
-    </div>
-  </header>
-
-
-<body>
-
-  <div></div>
    <section class="form-group">
     
   <div class="container">
-<form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="sendemail.php">
+<form action = '/' class="contact-form" method="POST">
 <div class="align-content">
     <div class="form-group col-md-2">
       <label for="UserName">Name</label>
-      <input type="text" class="form-control" id="UserName" placeholder="Applicant Name">
+      <input type="text" class="form-control" id="UserName" name="Name" placeholder="Applicant Name">
     </div>
     <div class="form-group col-md-2">
       <label for="Gender">Gender</label>
-    <select id="Gender" class="form-control">
+    <select id="Gender" class="form-control" name="Gender" >
         <option selected>Select</option>
         <option>Male</option>
         <option>Female</option>
@@ -60,7 +20,7 @@
     </div>
     <div class="form-group col-md-2">
       <label for="Married">Married</label>
-          <select id="Married" class="form-control">
+          <select id="Married" class="form-control" name="Married" >
             <option selected>Select</option>
             <option>Yes</option>
             <option>No</option>
@@ -68,7 +28,7 @@
     </div>
     <div class="form-group col-md-2">
       <label for="Dependents">Dependents</label>
-      <select id="Dependents" class="form-control">
+      <select id="Dependents" class="form-control" name="Dependents" >
             <option selected>Select</option>
             <option>0</option>
             <option>1</option>
@@ -78,7 +38,7 @@
     </div>
     <div class="form-group col-md-2">
       <label for="Education">Education</label>
-        <select id="Education" class="form-control">
+        <select id="Education" class="form-control" name="Education" >
             <option selected>Select</option>
             <option>Graduate</option>
             <option>Not Graduate</option>
@@ -86,7 +46,7 @@
     </div>
      <div class="form-group col-md-2">
       <label for="Self_Employed">Self_Employed</label>
-       <select id="Self_Employed" class="form-control">
+       <select id="Self_Employed" class="form-control" name="Self_Employed" >
             <option selected>Select</option>
             <option>Yes</option>
             <option>No</option>
@@ -94,7 +54,7 @@
     </div>
      <div class="form-group col-md-2">
       <label for="Credit_History">Credit_History</label>
-         <select id="Credit_History" class="form-control">
+         <select id="Credit_History" class="form-control" name= "Credit_History">
             <option selected>Select</option>
             <option>Yes</option>
             <option>No</option>
@@ -102,7 +62,7 @@
     </div>
     <div class="form-group col-md-2">
       <label for="Property_Area">Property_Area</label>
-       <select id="Property_Area" class="form-control">
+       <select id="Property_Area" class="form-control" name="Property_Area" >
         <option selected>Choose...</option>
         <option>Urban</option>
         <option>Rural</option>
@@ -111,15 +71,15 @@
     </div>
     <div class="form-group col-md-2">
       <label for="Total_Income">Total_Income</label>
-      <input type="amount" class="form-control" id="Total_Income" placeholder="Total_Income">
+      <input type="amount" class="form-control" id="Total_Income" placeholder="Total_Income" name="Total_Income" >
     </div>
      <div class="form-group col-md-2">
       <label for="EMI">EMI</label>
-      <input type="amount" class="form-control" id="EMI" placeholder="EMI">
+      <input type="amount" class="form-control" id="EMI" placeholder="EMI" name= "EMI">
     </div>
      <div class="form-group col-md-2">
-      <label for="Balance Income">Balance Income</label>
-      <input type="number" class="form-control" id="Balance_Income" placeholder="Balance Income">
+      <label for="Balance Income">Balance_Income</label>
+      <input type="number" class="form-control" id="Balance_Income" placeholder="Balance Income" name= "Balance_Income" >
     </div>
    </div>
 
@@ -135,9 +95,46 @@
 </div>
 
 </form>
-    </section><!--/#contact-page-->
+    <!--/#contact-page-->
 
- 
+
+<div class="container">
+
+  {% if allTodo|length == 0 %}
+  <div class="alert alert-dark" role="alert">
+                    No record added yet!
+                  </div>
+  {%else%}
+
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">sno</th>
+      <th scope="col">Name</th>
+      <th scope="col">Eligibility</th>
+      <th scope="col">Date</th>
+      <th scope="col">Remove</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for todo in allTodo %}
+    <tr>
+      <th scope="row">{{loop.index}}</th>
+      <td>{{todo.Name}}</td>
+      <td>{{todo.Name}}</td>
+      <td>{{todo.date_created}}</td>
+      <td>
+        <a href="/delete/{{todo.sno}}" type="button" class="btn btn-outline-org btn-sm mx-1">Delete</button>
+      </td>
+    </tr>
+    
+  {% endfor %}
+     </tbody>
+     </table>
+  {% endif %}
+
+</div>
+ </section>
 
   <!-- Bootstrap core JavaScript -->
   <script src="{{ url_for ('static', filename='vendor/jquery/jquery.min.js')}}"></script>
@@ -148,8 +145,6 @@
 <footer>      
 <p class="center footer">Copyright &copy; Dev 2021</p>     
 </footer>
-</body>
- <!-- Footer -->
 
+{% endblock body %}
 
-</html>

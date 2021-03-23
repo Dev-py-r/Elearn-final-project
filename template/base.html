@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Loan Predictor</title>
+
+    <!-- core CSS -->
+    <link href="{{ url_for ('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for ('static', filename='css/main.css')}}" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="{{ url_for ('static', filename='img/favicon.png')}}" rel="stylesheet">
+
+</head>
+<!--/head-->
+
+
+<!--Loan_ID Gender  Married Dependents  Education   Self_Employed   ApplicantIncome CoapplicantIncome   LoanAmount  Loan_Amount_Term    Credit_History  Property_Area   Loan_Status -->
+  <!-- Page Header -->
+  <header class="masthead darkened-image" style="background-image: url('{{ url_for ('static', filename='img/page-title.jpg')}}">
+
+
+    
+    <div class="container">
+      <div class="row">
+        
+          <h1 class="large-title">Loan Status Prediction</h1>
+ 
+    
+      </div>
+    </div>
+  </header>
+
+
+<body>
+  
+{% block body %}
+    
+{% endblock body %}
+
+</body>
+ <!-- Footer -->
+
+
+</html>

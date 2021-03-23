@@ -14,73 +14,77 @@
       <label for="Gender">Gender</label>
     <select id="Gender" class="form-control" name="Gender" >
         <option selected>Select</option>
-        <option>Male</option>
-        <option>Female</option>
+        <option value=1>Male</option>
+        <option value=0>Female</option>
       </select>
     </div>
     <div class="form-group col-md-2">
       <label for="Married">Married</label>
           <select id="Married" class="form-control" name="Married" >
             <option selected>Select</option>
-            <option>Yes</option>
-            <option>No</option>
+            <option value=0>No</option>
+            <option value=1>Yes</option>
             </select>
     </div>
     <div class="form-group col-md-2">
       <label for="Dependents">Dependents</label>
       <select id="Dependents" class="form-control" name="Dependents" >
             <option selected>Select</option>
-            <option>0</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3+</option>
+            <option value=0>0</option>
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3+</option>
       </select>
     </div>
     <div class="form-group col-md-2">
       <label for="Education">Education</label>
         <select id="Education" class="form-control" name="Education" >
             <option selected>Select</option>
-            <option>Graduate</option>
-            <option>Not Graduate</option>
+            <option value=0>Graduate</option>
+            <option value=1>Not Graduate</option>
       </select>
     </div>
      <div class="form-group col-md-2">
       <label for="Self_Employed">Self_Employed</label>
        <select id="Self_Employed" class="form-control" name="Self_Employed" >
             <option selected>Select</option>
-            <option>Yes</option>
-            <option>No</option>
+            <option value=0>No</option>
+            <option value=1>Yes</option>
       </select>
     </div>
      <div class="form-group col-md-2">
       <label for="Credit_History">Credit_History</label>
          <select id="Credit_History" class="form-control" name= "Credit_History">
             <option selected>Select</option>
-            <option>Yes</option>
-            <option>No</option>
+            <option value=1>Yes</option>
+            <option value=0>No</option>
       </select>
     </div>
     <div class="form-group col-md-2">
       <label for="Property_Area">Property_Area</label>
        <select id="Property_Area" class="form-control" name="Property_Area" >
         <option selected>Choose...</option>
-        <option>Urban</option>
-        <option>Rural</option>
-        <option>Semiurban</option>
+        <option value=2>Urban</option>
+        <option value=0>Rural</option>
+        <option value=1>Semiurban</option>
       </select>
     </div>
     <div class="form-group col-md-2">
-      <label for="Total_Income">Total_Income</label>
-      <input type="amount" class="form-control" id="Total_Income" placeholder="Total_Income" name="Total_Income" >
+      <label for="Total_Income">Applicant_Income</label>
+      <input type="number" class="form-control" id="Total_Income" placeholder="Applicant_Income" name="Applicant_Income">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="Total_Income">Coapplicant_Income</label>
+      <input type="number" class="form-control" id="Coapplicant_Income" placeholder="Coapplicant_Income" name="Coapplicant_Income">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="Total_Income">Loan_Amount</label>
+      <input type="number" class="form-control" id="Loan_Amount" placeholder="Loan_Amount" name="Loan_Amount" >
     </div>
      <div class="form-group col-md-2">
-      <label for="EMI">EMI</label>
-      <input type="amount" class="form-control" id="EMI" placeholder="EMI" name= "EMI">
-    </div>
-     <div class="form-group col-md-2">
-      <label for="Balance Income">Balance_Income</label>
-      <input type="number" class="form-control" id="Balance_Income" placeholder="Balance Income" name= "Balance_Income" >
-    </div>
+      <label for="Total_Income">Loan_Amount_Term</label>
+      <input type="number" class="form-control" id="Loan_Amount_Term" placeholder="Loan_Amount_Term" name="Loan_Amount_Term">
+    </div>     
    </div>
 
  <!-- <div class="form-group">
@@ -121,7 +125,7 @@
     <tr>
       <th scope="row">{{loop.index}}</th>
       <td>{{todo.Name}}</td>
-      <td>{{todo.Name}}</td>
+      <td>{{todo.Predict}}</td>
       <td>{{todo.date_created}}</td>
       <td>
         <a href="/delete/{{todo.sno}}" type="button" class="btn btn-outline-org btn-sm mx-1">Delete</button>

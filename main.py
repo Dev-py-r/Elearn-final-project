@@ -12,7 +12,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///back.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-model = joblib.load(r'C:\Users\prasa\Desktop\Excelr\j_clf')
+model = joblib.load(r'.\j_clf')
 
 class Todo(db.Model):
     sno = db.Column(db.Integer, primary_key=True)

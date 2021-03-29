@@ -13,7 +13,6 @@
     <div class="form-group col-md-2">
       <label for="Gender">Gender</label>
     <select id="Gender" class="form-control" name="Gender" >
-        <option selected>Select</option>
         <option value=1>Male</option>
         <option value=0>Female</option>
       </select>
@@ -21,7 +20,6 @@
     <div class="form-group col-md-2">
       <label for="Married">Married</label>
           <select id="Married" class="form-control" name="Married" >
-            <option selected>Select</option>
             <option value=0>No</option>
             <option value=1>Yes</option>
             </select>
@@ -29,7 +27,6 @@
     <div class="form-group col-md-2">
       <label for="Dependents">Dependents</label>
       <select id="Dependents" class="form-control" name="Dependents" >
-            <option selected>Select</option>
             <option value=0>0</option>
             <option value=1>1</option>
             <option value=2>2</option>
@@ -39,7 +36,6 @@
     <div class="form-group col-md-2">
       <label for="Education">Education</label>
         <select id="Education" class="form-control" name="Education" >
-            <option selected>Select</option>
             <option value=0>Graduate</option>
             <option value=1>Not Graduate</option>
       </select>
@@ -47,7 +43,6 @@
      <div class="form-group col-md-2">
       <label for="Self_Employed">Self_Employed</label>
        <select id="Self_Employed" class="form-control" name="Self_Employed" >
-            <option selected>Select</option>
             <option value=0>No</option>
             <option value=1>Yes</option>
       </select>
@@ -55,7 +50,6 @@
      <div class="form-group col-md-2">
       <label for="Credit_History">Credit_History</label>
          <select id="Credit_History" class="form-control" name= "Credit_History">
-            <option selected>Select</option>
             <option value=1>Yes</option>
             <option value=0>No</option>
       </select>
@@ -63,27 +57,26 @@
     <div class="form-group col-md-2">
       <label for="Property_Area">Property_Area</label>
        <select id="Property_Area" class="form-control" name="Property_Area" >
-        <option selected>Choose...</option>
         <option value=2>Urban</option>
         <option value=0>Rural</option>
         <option value=1>Semiurban</option>
       </select>
     </div>
     <div class="form-group col-md-2">
-      <label for="Total_Income">Applicant_Income</label>
-      <input type="number" class="form-control" id="Total_Income" placeholder="Applicant_Income" name="Applicant_Income">
+      <label for="Applicant_Income">Applicant_Income</label>
+      <input type="number" class="form-control" id="Applicant_Income" placeholder="Applicant_Income" name="Applicant_Income", value = 0 onClick="Clear(this.id);">
     </div>
     <div class="form-group col-md-2">
-      <label for="Total_Income">Coapplicant_Income</label>
-      <input type="number" class="form-control" id="Coapplicant_Income" placeholder="Coapplicant_Income" name="Coapplicant_Income">
+      <label for="Coapplicant_Income">Coapplicant_Income</label>
+      <input type="number" class="form-control" id="Coapplicant_Income" placeholder="Coapplicant_Income" name="Coapplicant_Income" value = 0 onClick="Clear(this.id);">
     </div>
     <div class="form-group col-md-2">
       <label for="Total_Income">Loan_Amount</label>
-      <input type="number" class="form-control" id="Loan_Amount" placeholder="Loan_Amount" name="Loan_Amount" >
+      <input type="number" class="form-control" id="Loan_Amount" placeholder="Loan_Amount" name="Loan_Amount" value = 0 onClick="Clear(this.id);">
     </div>
      <div class="form-group col-md-2">
-      <label for="Total_Income">Loan_Amount_Term</label>
-      <input type="number" class="form-control" id="Loan_Amount_Term" placeholder="Loan_Amount_Term" name="Loan_Amount_Term">
+      <label for="Loan_Amount_Term">Loan_Amount_Term</label>
+      <input type="number" class="form-control" id="Loan_Amount_Term" placeholder="Loan_Amount_Term" name="Loan_Amount_Term" value = 0 onClick="Clear(this.id);">
     </div>     
    </div>
 
@@ -97,9 +90,17 @@
   <div class="form-group col-md-2">
   <button type="submit" class="btn btn-primary">Predict</button>
 </div>
+<script type="text/javascript">
 
+function Clear(str)
+{    
+   document.getElementById(str).value= "";
+}
+</script>
 </form>
     <!--/#contact-page-->
+
+
 
 
 <div class="container">
@@ -120,8 +121,8 @@
       <th scope="col">Remove</th>
     </tr>
   </thead>
-  <tbody>
   {% for todo in allTodo %}
+  <tbody>
     <tr>
       <th scope="row">{{loop.index}}</th>
       <td>{{todo.Name}}</td>

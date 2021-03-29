@@ -12,7 +12,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///back.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-model = joblib.load(r'C:\Users\prasa\Desktop\Excelr\j_svm')
+model = joblib.load(r'C:\Users\prasa\Desktop\Excelr\j_clf')
 
 class Todo(db.Model):
     sno = db.Column(db.Integer, primary_key=True)
@@ -28,41 +28,25 @@ class Todo(db.Model):
 def index():
     if request.method =='POST':
         Name = request.form['Name']
-        if(Name==""):
-            Name = 'Unknown'
         Gender = int(request.form['Gender'])
-        if(Gender==""):
-            Gender = 1
         Married = int(request.form['Married'])
-        if (Married == ""):
-            Married = 1
         Dependents = int(request.form['Dependents'])
-        if (Dependents == ""):
-            Dependents = 0
         Education = int(request.form['Education'])
-        if (Education == ""):
-            Education = 0
         Self_Employed = int(request.form['Self_Employed'])
-        if (Self_Employed == ""):
-            Self_Employed = 1
         Credit_History = int(request.form['Credit_History'])
-        if (Credit_History == ""):
-            Credit_History = 1
         Property_Area = int(request.form['Property_Area'])
-        if (Property_Area == ""):
-            Property_Area = 2
         Applicant_Income = int(request.form['Applicant_Income'])
-        if (Applicant_Income == "" or Applicant_Income > 9357):
+        if (Applicant_Income > 9357):
             Applicant_Income = 9357
         Coapplicant_Income = int(request.form['Coapplicant_Income'])
-        if (Coapplicant_Income == "" or Coapplicant_Income > 3750):
+        if (Coapplicant_Income > 3750):
             Coapplicant_Income = 3750
         Loan_Amount = int(request.form['Loan_Amount'])
-        if (Loan_Amount == "" or Loan_Amount > 228):
+        if (Loan_Amount > 228):
             Loan_Amount = 228
         Loan_Amount_Term = int(request.form['Loan_Amount_Term'])
-        if (Loan_Amount_Term == "" or Loan_Amount_Term > 360 or Loan_Amount_Term < 12):
-            Loan_Amount_Term = 360
+        if (Loan_Amount_Term > 360 or Loan_Amount_Term < 12):
+            Loan_Amount_Term = int(360)
 
         scaler = StandardScaler()
         trans = scaler.fit_transform(np.array([[Gender, Married, Dependents, Education, Self_Employed, Credit_History, Property_Area, Applicant_Income,Coapplicant_Income, Loan_Amount, Loan_Amount_Term]]))
@@ -88,9 +72,17 @@ def delete(sno):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8000)
+    app.run(debug=False, port=8000)
 
 
     #from main import db
     #db.create_all
     #exit()
+
+    # pip install gunicorn
+    #Heroku cli
+    # pip freeze > requirement.txt
+
+    # Probfile
+
+    # web: gunicorn app: app

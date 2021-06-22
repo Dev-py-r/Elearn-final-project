@@ -42,9 +42,7 @@ def index():
         Coapplicant_Income = int(request.form['Coapplicant_Income'])
         if (Coapplicant_Income > 3750):
             Coapplicant_Income = 3750
-        Loan_Amount = int(request.form['Loan_Amount'])
-        if (Loan_Amount > 228):
-            Loan_Amount = 228
+        Loan_Amount = int(request.form['Loan_Amount'])       
         Loan_Amount_Term = int(request.form['Loan_Amount_Term'])
         if (Loan_Amount_Term > 360 or Loan_Amount_Term < 12):
             Loan_Amount_Term = int(360)
